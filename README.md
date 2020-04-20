@@ -25,11 +25,11 @@ date || credit || debit || balance
 
 ## The Process
 
-Setup
-Planning
-Feature Test
-Unit Test
-Red, Green, Refactor
+Setup - initialising a git, setting up my jasmine test suite
+Planning - modelling the objects and the possible solutions for our requirements
+Feature Test - writing the first feature test for initial behaviour
+Unit Test - to check each object operates independently of another and reports the expected behaviour
+Red, Green, Refactor - write these failing tests, pass them with the simplest solution and then tidy up the code. Repeat.
 
 ## Plan and Model
 
