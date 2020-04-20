@@ -1,5 +1,19 @@
 # Bank Account Tech Test
 
+Created in JavaScript and tested with Jasmine, ESLint, Instanbul
+
+## Running the program
+
+```
+npm start
+```
+
+## Running the tests
+
+```
+npm test
+```
+
 ## The Challenge...
 
 To TDD a bank account that can accept withdrawals, deposits and create bank statements. As follows:
@@ -25,7 +39,7 @@ date || credit || debit || balance
 
 ## The Process
 
-Setup - initialising a git, setting up my jasmine test suite
+Setup - initialising a git, setting up my jasmine test suite and linter
 Planning - modelling the objects and the possible solutions for our requirements
 Feature Test - writing the first feature test for initial behaviour
 Unit Test - to check each object operates independently of another and reports the expected behaviour
@@ -35,15 +49,21 @@ Red, Green, Refactor - write these failing tests, pass them with the simplest so
 
 To start with I began to think about all of the things this bank account would need to be able to do:
 
-• Track the total amount of money (balance) • Increase the total when a deposit is made • Decrease the total when a withdrawal is made • Track the dates and transaction history • Output a formatted statement of the accounts transaction history
+• Track the total amount of money (balance) • Increase the total when a deposit is made • Decrease the total when a withdrawal is made • Track the dates and transaction history • Output a formatted statement of the account's transaction history
 
 | Object     | State         | Behaviour |
 | ------------- |:-------------:| -----:|
-| BankAccount    | balance, dates of deposits | addMoney(x), withdrawMoney(x)  |
-| BankStatement   | refers to Account state     |   printStatement |
+| BankAccount | balance, Statement | addMoney(x), withdrawMoney(x), printStatement  |
+| Transaction | total_amount, created_at | NA |
+| Statement | transactions = []; | formatStatement |
 
 BankAccount Class
- • Responsible for tracking the transactions and updating the balance accordingly
+ • Responsible for tracking and printing the transactions to the user
 
-Statement Class
- • Responsible for outputting statement data to a readable format into the console
+Transaction Class
+ • Responsible for keeping track of when it was initialised and the amount that was added or subtracted during the transaction
+
+ Statement Class
+ • Responsible for formatting the account summary to the user
+
+This rough outline has a class BankAccount which oversees the implmentation of 2 other classes, transactions and statements. Transaction objects are created anytime money is added or withdrawn from the account and they track when and how much was moved. Statement objects are initialised when the user asks to see their account statement, they fetch transaction objects and format them so the BankAccount object can render a formatted response to the user.
