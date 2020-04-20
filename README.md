@@ -1,11 +1,21 @@
 # Bank Account Tech Test
 
-Created in JavaScript and tested with Jasmine, ESLint, Node and Istanbul
+Created in JavaScript and Node,  tested with Jasmine, ESLint and Istanbul.
 
 ## Running the program
 
 ```
 npm start
+```
+Visit localhost:8080 and hit command j to start interacting with the application. Standard commands are:
+
+Make sure you initialise the bank account first, in the examples below I have created my own local 'account'.
+
+```
+const account = new BankAccount();
+account.addMoney(amount);
+account.withdrawMoney(amount);
+account.printStatement;
 ```
 
 ## Running the tests
