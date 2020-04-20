@@ -2,18 +2,23 @@
   "name": "bank_tech_test",
   "version": "1.0.0",
   "description": "bank_tech_test",
-  "main": "index.js",
+  "main": "app.js",
   "directories": {
     "lib": "lib"
   },
   "scripts": {
-    "test": "node jasmine.js"
+    "test": "node jasmine.js",
+    "start": "node node_modules/http-server/bin/http-server"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.17.1",
+    "http-server": "^0.12.1",
     "istanbul": "^0.4.5",
-    "jasmine": "^3.5.0"
+    "jasmine": "^3.5.0",
+    "jasmine-node": "^3.0.0",
+    "request": "^2.88.2"
   },
   "devDependencies": {
     "eslint": "^6.8.0",

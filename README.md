@@ -1,6 +1,6 @@
 # Bank Account Tech Test
 
-Created in JavaScript and tested with Jasmine, ESLint, Instanbul
+Created in JavaScript and tested with Jasmine, ESLint, Node and Istanbul
 
 ## Running the program
 
@@ -10,8 +10,18 @@ npm start
 
 ## Running the tests
 
+Make sure you have ESlint and Istanbul functioning locally to see the coverage and test the code quality:
+
+```
+npm install -g istanbul
+npm install eslint --save-dev
+```
+
+To run the tests enter:
+
 ```
 npm test
+npx eslint BankAccount.js
 ```
 
 ## The Challenge...
