@@ -19,6 +19,7 @@ describe('Transaction', () => {
   })
 
   it('initializes with the updated bank account balance', () => {
+    transaction = new Transaction(25, 25);
     expect(transaction._current_balance).toEqual("25.00");
   })
 
