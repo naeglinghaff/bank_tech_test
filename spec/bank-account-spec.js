@@ -14,8 +14,9 @@ describe('Bank Account', () => {
     expect(account._balance).toEqual(0);
   })
 
-  it('should create a new transaction when money is added', () => {
+  it('should create a new transaction when money is added or withdrawn', () => {
     expect(account.addMoney(100)).toBeInstanceOf(Transaction);
+    expect(account.withdraw(100)).toBeInstanceOf(Transaction);
   })
 
   it('should update the balance when money is added', () => {
@@ -23,7 +24,7 @@ describe('Bank Account', () => {
     expect(account._balance).toEqual(100.00);
   })
 
-  it('should update the balance when money is added', () => {
+  it('should update the balance when money is withdrawn', () => {
     account.addMoney(100);
     account.withdraw(50);
     expect(account._balance).toEqual(50.00);
