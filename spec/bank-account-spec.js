@@ -23,6 +23,16 @@ describe('Bank Account', () => {
     expect(account._balance).toEqual(100.00);
   })
 
+  it('should update the balance when money is added', () => {
+    account.addMoney(100);
+    account.withdraw(50);
+    expect(account._balance).toEqual(50.00);
+  })
+
+  it('should raise error if there are insufficient funds', () => {
+    expect(function(){ account.withdraw(50); }).toThrow("Error: insufficient funds")
+  })
+
   afterEach( () => {
     jasmine.clock().uninstall();
   })

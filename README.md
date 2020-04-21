@@ -1,6 +1,6 @@
 # Bank Account Tech Test
 
-Created in JavaScript and Node,  tested with Jasmine, ESLint and Istanbul.
+Created in JavaScript and Node, tested with Jasmine, ESLint and Karma.
 
 ## Running the program
 
@@ -26,7 +26,6 @@ Make sure you have ESlint and Karma functioning locally to see the coverage and 
 npm install
 
 ```
-
 To run the tests enter:
 
 ```
@@ -94,3 +93,7 @@ This rough outline has a class BankAccount which oversees the implementation of 
 Running the feature test required some adjustment after implementing Node and Karma. Using the require node syntax in my classes meant that the modules needed to be imported to the browser via CommonJS rather than with a script tag. Otherwise they threw reference errors at the require functions in the script.
 
 Configuring browserify and karma properly took some time. Eventually I managed to debug it so that I could display test coverage in the console, run my feature test script and allow the user to interact with the program using the chrome console, as outlined in the project requirements.
+
+```
+browserify main.js > bundle.js
+```

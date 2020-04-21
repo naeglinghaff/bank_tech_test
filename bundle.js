@@ -6,6 +6,7 @@ var BankAccount = require('./src/bank-account.js');
 
 let account = new BankAccount();
 account.addMoney(100);
+account.withdraw(50);
 
 module.exports = {
   Transaction : Transaction,
