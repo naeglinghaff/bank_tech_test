@@ -14,12 +14,12 @@ describe('Transaction', () => {
   })
 
   it('initializes with a monetary value', () => {
-    transaction = new Transaction(25);
+    transaction = new Transaction(25, 25);
     expect(transaction._value).toEqual("25.00");
   })
 
   it('initializes with the updated bank account balance', () => {
-    expect(transaction._current_balance).toEqual();
+    expect(transaction._current_balance).toEqual("25.00");
   })
 
   afterEach( () => {

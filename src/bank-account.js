@@ -4,7 +4,9 @@ class BankAccount {
   }
 
   addMoney(amount){
-    let transaction = require('./transaction')
+    let Transaction = require('./transaction')
+    this._balance += amount;
+    let transaction = new Transaction(amount, this._balance);
     return transaction;
   }
 }

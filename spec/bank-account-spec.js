@@ -15,7 +15,12 @@ describe('Bank Account', () => {
   })
 
   it('should create a new transaction when money is added', () => {
-    expect(account.addMoney(100)).toEqual(Transaction);
+    expect(account.addMoney(100)).toBeInstanceOf(Transaction);
+  })
+
+  it('should update the balance when money is added', () => {
+    account.addMoney(100);
+    expect(account._balance).toEqual(100.00);
   })
 
   afterEach( () => {
