@@ -32,6 +32,7 @@ To run the tests enter:
 ```
 npm test
 npx eslint BankAccount.js
+karma start
 ```
 
 ## The Challenge...

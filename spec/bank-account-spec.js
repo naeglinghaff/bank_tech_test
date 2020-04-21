@@ -1,11 +1,13 @@
 describe('Bank Account', () => {
-  let account;
-  let transaction;
+  let BankAccount = require('../src/bank-account.js');
+  let Transaction = require('../src/transaction.js')
 
 // initializes new bank account
   beforeEach(() => {
-    account = require('../src/bank-account.js');
-    transaction = require('../src/transaction.js')
+    account = new BankAccount;
+    jasmine.clock().install();
+    var baseDate = new Date(2020, 2, 12);
+    jasmine.clock().mockDate(baseDate);
   })
 
   it('should initialise with a balance of 0', () => {
@@ -13,6 +15,10 @@ describe('Bank Account', () => {
   })
 
   it('should create a new transaction when money is added', () => {
-    expect(account.addMoney(100)).toEqual(transaction);
+    expect(account.addMoney(100)).toEqual(Transaction);
+  })
+
+  afterEach( () => {
+    jasmine.clock().uninstall();
   })
 })

@@ -9,4 +9,4 @@ class BankAccount {
   }
 }
 
-module.exports = new BankAccount;
+module.exports = BankAccount;

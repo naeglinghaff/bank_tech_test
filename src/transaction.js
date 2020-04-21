@@ -1,8 +1,8 @@
 class Transaction {
   constructor() {
-
+    this.created_at = new Date();
   }
 
 }
 
-module.exports = new Transaction;
+module.exports = Transaction;
