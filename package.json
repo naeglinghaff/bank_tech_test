@@ -15,17 +15,15 @@
   "dependencies": {
     "express": "^4.17.1",
     "http-server": "^0.12.1",
-    "istanbul": "^0.4.5",
     "jasmine": "^3.5.0",
     "jasmine-node": "^3.0.0",
-    "karma-chrome-launcher": "^3.1.0",
-    "karma-jasmine": "^3.1.1",
-    "request": "^2.88.2"
+    "karma": "^5.0.2",
+    "karma-coverage": "^2.0.2"
   },
   "devDependencies": {
     "eslint": "^6.8.0",
     "jasmine-console-reporter": "^3.1.0",
-    "karma": "^5.0.2",
-    "karma-browserify": "file:node_modules/karma-browserify"
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-jasmine": "^3.1.1"
   }
 }
