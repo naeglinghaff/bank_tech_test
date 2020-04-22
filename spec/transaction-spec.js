@@ -23,6 +23,11 @@ describe('Transaction', () => {
       transaction = new Transaction(25, 25);
       expect(transaction._current_balance).toEqual("25.00");
     })
+
+    it('initializes with a boolean', () => {
+      transaction = new Transaction(10, 6, true);
+      expect(transaction._credit).toBeInstanceOf(Boolean);
+    })
   })
 
   afterEach( () => {

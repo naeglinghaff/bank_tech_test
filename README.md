@@ -97,7 +97,9 @@ Running the feature s required some adjustment after implementing Node and Karma
 
 Configuring browserify and karma properly took some time. Eventually I managed to debug it so that I could display test coverage in the console, run my feature test script and allow the user to interact with the program using the chrome console, as outlined in the project requirements.
 
-The required syntax for interacting with the program became more convaluted - requiring a named constructionModule to join the user and the object itself.
+The required syntax for interacting with the program became more convoluted - requiring a named constructionModule to join the user and the object itself.
+
+At one point there was also an issue with the time format. In my Karma suite the locale format was defaulting to another timezone and my local tests were formatting the dates according to my local machine's location.
 
 ```
 browserify main.js --s constructionModule  > bundle.js

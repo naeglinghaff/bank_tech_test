@@ -19,7 +19,7 @@ class BankAccount {
 
   addMoney(amount){
     this._balance += amount;
-    let transaction = new Transaction(amount, this._balance);
+    let transaction = new Transaction(amount, this._balance, true);
     this._statement.transactions.push(transaction);
     return transaction;
   }
@@ -29,7 +29,7 @@ class BankAccount {
       throw ("Error: insufficient funds");
     } else {
       this._balance -= amount;
-      let transaction = new Transaction(amount, this._balance);
+      let transaction = new Transaction(amount, this._balance, false);
       this._statement.transactions.push(transaction);
       return transaction;
     }
@@ -49,9 +49,13 @@ class Statement {
   }
 
   format() {
-    let row = "date || credit || debit || balance\n"
-    for(var i = 0; i < this.transactions.length; i ++){
-      row += this.transactions[i]._created_at.toLocaleDateString() + " " + this.transactions[i]._value + " " + this.transactions[i]._current_balance + "\n";
+    let row = "||            date || credit || debit || balance ||\n"
+      for(var i = 0; i < this.transactions.length; i ++){
+        if(this.transactions[i]._credit){
+          row += " || " + this.transactions[i]._created_at + " || " + this.transactions[i]._value + " || " + "   || " + this.transactions[i]._current_balance + " || " + "\n";
+      } else {
+          row += " || " + this.transactions[i]._created_at + " || " +  "   || " + this.transactions[i]._value + " || " +  this.transactions[i]._current_balance + " || " + "\n";
+      }
     }
     return row;
   }
@@ -61,10 +65,11 @@ module.exports = Statement;
 },{}],4:[function(require,module,exports){
 class Transaction {
 
-  constructor(amount, current_balance) {
-    this._created_at = new Date();
+  constructor(amount, current_balance, credit) {
+    this._created_at = new Date().toDateString();
     this._value = (Math.round(amount * 100) / 100).toFixed(2);
     this._current_balance = (Math.round(current_balance * 100) / 100).toFixed(2);
+    this._credit = credit;
   }
 }
 
