@@ -1,6 +1,7 @@
 describe('Bank Account', () => {
   let BankAccount = require('../src/bank-account.js');
-  let Transaction = require('../src/transaction.js')
+  let Transaction = require('../src/transaction.js');
+  let Statement = require('../src/statement.js');
 
 // initializes new bank account
   beforeEach(() => {
@@ -37,6 +38,18 @@ describe('Bank Account', () => {
 
     it('raises error if there are insufficient funds', () => {
       expect(function(){ account.withdraw(50); }).toThrow("Error: insufficient funds")
+    })
+  })
+
+  describe('printing statements', () => {
+    it('saves a statement object', () => {
+      expect(account._statement).toBeInstanceOf(Statement);
+    })
+
+    it('delegates to the format method to log the transactions to the console', () => {
+      spyOn(account._statement, 'format').and.callThrough();
+      account.printStatement()
+      expect(account._statement.format).toHaveBeenCalled();
     })
   })
 

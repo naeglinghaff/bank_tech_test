@@ -4,15 +4,16 @@ Created in JavaScript and Node, tested with Jasmine, ESLint and Karma.
 
 ## Running the program
 
+Clone or download the repo files and once you are in the root directory run:
+
 ```
 npm start
 ```
-Visit localhost:8080 and hit command j to start interacting with the application.
 
-Make sure you initialise the bank account first, in the examples below I have created my own local 'account'.
+Navigate to localhost:8080 and you can start to interact with the program. Make sure you initialise the bank account first, in the examples below I have created my own local 'account'.
 
 ```
-const account = new BankAccount();
+const account = new constructionModule.BankAccount();
 account.addMoney(amount);
 account.withdrawMoney(amount);
 account.printStatement;
@@ -33,6 +34,8 @@ npm test
 npx eslint <filename>
 karma start
 ```
+
+This will run the unit, linter and coverage tests in turn.
 
 ## The Challenge...
 
@@ -86,14 +89,20 @@ Transaction Class
  Statement Class
  • Responsible for formatting the account summary to the user
 
-This rough outline has a class BankAccount which oversees the implementation of 2 other classes, transactions and statements. Transaction objects are created anytime money is added or withdrawn from the account and they track when and how much was moved. Statement objects are initialised when the user asks to see their account statement, they fetch transaction objects and format them so the BankAccount object can render a formatted response to the user.
+This rough outline has a class BankAccount which oversees the implementation of 2 other classes, transactions and statements. Transaction objects are created any time money is added or withdrawn from the account and they track when and how much was moved. Statement objects are initialised when the user asks to see their account statement, they fetch transaction objects and format them so the BankAccount object can render a formatted response to the user.
 
 ## Issues
 
-Running the feature test required some adjustment after implementing Node and Karma. Using the require node syntax in my classes meant that the modules needed to be imported to the browser via CommonJS rather than with a script tag. Otherwise they threw reference errors at the require functions in the script.
+Running the feature s required some adjustment after implementing Node and Karma. Using the require node syntax in my classes meant that the modules needed to be imported to the browser via CommonJS rather than with a script tag. Otherwise they threw reference errors at the require functions in the script.
 
 Configuring browserify and karma properly took some time. Eventually I managed to debug it so that I could display test coverage in the console, run my feature test script and allow the user to interact with the program using the chrome console, as outlined in the project requirements.
 
+The required syntax for interacting with the program became more convaluted - requiring a named constructionModule to join the user and the object itself.
+
 ```
-browserify main.js > bundle.js
+browserify main.js --s constructionModule  > bundle.js
 ```
+## Assumptions
+
+* A user will input whole numbers
+* A user could enter information on multiple dates
