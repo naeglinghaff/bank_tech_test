@@ -16,6 +16,7 @@ describe('Statement', () => {
     let fakeTransaction = new Transaction;
     fakeTransaction._value = "15.00";
     fakeTransaction._current_balance = "20.00";
+    fakeTransaction._credit = true;
     statement.transactions.push(fakeTransaction);
   })
 
@@ -32,8 +33,13 @@ describe('Statement', () => {
        expect(statement.format()).toContain("15.00");
      })
 
+     it('adds a column to the right for a credit transaction', () => {
+       expect(statement.format()).toContain("||            date || credit || debit || balance ||\n || Sun Mar 22 2020 || 15.00 ||    || 20.00 || \n")
+     })
+
      it('adds a column to the left for a debit transaction', () => {
-       expect(statement.format()).toEqual("||            date || credit || debit || balance ||\n || Sun Mar 22 2020 ||    || 15.00 || 20.00 || \n")
+       statement.transactions[0]._credit = false;
+       expect(statement.format()).toContain("|| Sun Mar 22 2020 ||    || 15.00 || 20.00 || \n")
      })
   })
 
