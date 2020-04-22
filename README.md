@@ -2,7 +2,7 @@
 
 Created in JavaScript and Node.js, tested with Jasmine, ESLint and Karma.
 
-## Running the program
+## Running the Program
 
 Clone or download the repo files and once you are in the root directory run:
 
@@ -80,8 +80,8 @@ To start with I began to think about all of the things this bank account would n
 | Object     | State         | Behaviour |
 | ------------- |:-------------:| -----:|
 | BankAccount | balance, Statement | addMoney(x), withdrawMoney(x), printStatement  |
-| Transaction | total_amount, created_at | NA |
-| Statement | transactions = []; | formatStatement |
+| Transaction | total_amount, created_at, credit?, value |  |
+| Statement | transactions = []; | format() |
 
 BankAccount Class
  • Responsible for tracking and printing the transactions to the user
@@ -94,6 +94,13 @@ Transaction Class
 
 This rough outline has a class BankAccount which oversees the implementation of 2 other classes, Transaction and Statement. Transaction objects are created any time money is added or withdrawn from the account and they track when and how much was moved. Statement objects fetch transaction objects and format them so the BankAccount can render a formatted response to the user.
 
+## Assumptions
+
+There were several assumptions that I based my tests and my solution around:
+
+* A user will input whole numbers
+* A user could enter information on multiple dates
+
 ## Issues
 
 Running the feature tests required some adjustment after implementing Node and Karma. Using the require node syntax in my classes meant that the modules needed to be imported to the browser via CommonJS rather than with a script tag. Otherwise they threw reference errors at the require functions in the script.
@@ -104,9 +111,9 @@ One downside of this approach was that the required syntax for interacting with 
 
 At one point there was also an issue with the time format. In my Karma suite the locale format was defaulting to another timezone and my local tests were formatting the dates according to my local machine's location. Changing the date format to a string stopped the different environments interfering with my test state.
 
-## Assumptions
 
-There were several assumptions that I based my tests and my solution around:
+## Reflection
 
-* A user will input whole numbers
-* A user could enter information on multiple dates
+On reflection it may have been unnecessary to run the application with Node. This increased the number of the dependencies and made the implementation in the browser more complicated. However, I think that the trade-off means that the code should be more manageable and expandable in the future. I was also able to display my code test coverage and the results of my tests in my console.
+
+Most importantly, I learnt a lot more about Node modules along the way.
