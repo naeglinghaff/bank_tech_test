@@ -11,7 +11,7 @@ describe('Transaction', () => {
       var baseDate = new Date(2020, 2, 12);
       jasmine.clock().mockDate(baseDate);
       transaction = new Transaction;
-      expect(transaction._created_at).toEqual(baseDate);
+      expect(transaction._created_at).toEqual("Thu Mar 12 2020");
     })
 
     it('initializes with a monetary value', () => {

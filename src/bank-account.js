@@ -26,8 +26,7 @@ class BankAccount {
   }
 
   printStatement(){
-    this._statement.format();
-    console.log(this._statement.format());
+    return this._statement.format();
   }
 }
 

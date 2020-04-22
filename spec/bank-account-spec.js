@@ -15,6 +15,10 @@ describe('Bank Account', () => {
     it('initialises with a balance of 0', () => {
       expect(account._balance).toEqual(0);
     })
+
+    it('saves a statement object', () => {
+      expect(account._statement).toBeInstanceOf(Statement);
+    })
   })
 
   describe('adding money', () => {
@@ -42,10 +46,6 @@ describe('Bank Account', () => {
   })
 
   describe('printing statements', () => {
-    it('saves a statement object', () => {
-      expect(account._statement).toBeInstanceOf(Statement);
-    })
-
     it('delegates to the format method to log the transactions to the console', () => {
       spyOn(account._statement, 'format').and.callThrough();
       account.printStatement()
