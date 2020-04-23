@@ -1,7 +1,6 @@
 describe('Bank Account', () => {
   let BankAccount = require('../src/bank-account.js');
   let Transaction = require('../src/transaction.js');
-  let Statement = require('../src/statement.js');
 
 // initializes new bank account
   beforeEach(() => {
@@ -16,15 +15,28 @@ describe('Bank Account', () => {
       expect(account._balance).toEqual(0);
     })
 
-    it('saves a statement object', () => {
-      expect(account._statement).toBeInstanceOf(Statement);
+    it('parses in a statement object', () => {
+      var statement = { transactions: [] };
+      var account_2 = new BankAccount(statement);
+      expect(account_2._statement).toEqual(statement);
+    })
+
+    it('parses in a mocked Transaction class', () => {
+      var statement = { transactions: [] };
+      var fakeClass = { constructor : function(){ return true; } };
+      var account_2 = new BankAccount(statement, fakeClass);
+      expect(account_2._transactionClass).toEqual(fakeClass);
     })
   })
 
   describe('adding money', () => {
-    it('creates a new transaction when money is added or withdrawn', () => {
-      expect(account.addMoney(100)).toBeInstanceOf(Transaction);
-      expect(account.withdraw(100)).toBeInstanceOf(Transaction);
+    it('calls on Transaction class when money is added or withdrawn', () => {
+      var statement = { transactions: [] };
+      var fakeClass = spyOn(Transaction, 'constructor');
+      var account_2 = new BankAccount(statement, fakeClass);
+      account_2.addMoney(100)
+      account_2.withdraw(100)
+      expect(fakeClass).toHaveBeenCalledTimes(2);
     })
 
     it('updates the balance when money is added', () => {
