@@ -14,7 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "ecstatic": "^4.1.4",
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "http-server": "^0.12.1",
     "jasmine": "^3.5.0",
     "jasmine-node": "^3.0.0",
